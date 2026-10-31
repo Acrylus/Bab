@@ -1,0 +1,176 @@
+<main>
+  <section class="hero" [style.--hero-art]="'url(' + heroImage + ')'">
+    <header class="topbar">
+      <a class="wordmark" href="#home" aria-label="Acrylus Studio home">
+        <span class="wordmark-mark" aria-hidden="true">A</span>
+        <span>ACRYLUS<span class="wordmark-light"> STUDIO</span></span>
+      </a>
+
+      <p class="header-signature">Anton Joseph Cruz <span aria-label="loves">♥</span> Divis Jessan Gonzaga</p>
+
+      <div class="edition-note"><span class="edition-dot"></span> {{ callSign }}</div>
+    </header>
+
+    <div class="hero-content" id="home">
+      <div class="eyebrow"><span class="eyebrow-line"></span> ACRYLUS STUDIO PRESENTS</div>
+      <h1>For Bab,<br><span class="hero-script">always.</span></h1>
+      <p class="monthsary-kicker">THREE MONTHS OF US</p>
+      <p class="director">Happy 3rd Monthsary, Bab.</p>
+
+      <div class="film-meta" aria-label="Premiere details">
+        <span>DIVIS JESSAN GONZAGA</span>
+        <span class="meta-divider"></span>
+        <span>MY FAVORITE PERSON</span>
+      </div>
+
+      <p class="synopsis">A celebration of our first three months: every little moment, memory, and poem that makes our story ours.</p>
+
+      <div class="hero-actions">
+        <button class="button button-primary" type="button" (click)="openSlideshow()">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.8v12.4a.8.8 0 0 0 1.2.7l10-6.2a.8.8 0 0 0 0-1.4l-10-6.2a.8.8 0 0 0-1.2.7Z" fill="currentColor"/></svg>
+          <span>Open our story</span>
+        </button>
+        <a class="button button-secondary" href="#poem">
+          <span>Our poem</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.75h10a2 2 0 0 1 2 2v12.5l-7-3.5-7 3.5V6.75a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"/></svg>
+        </a>
+      </div>
+      <div class="availability"><span class="availability-rule"></span> EVEN FROM HERE, I'M WITH YOU <span class="availability-rule"></span></div>
+      <div class="love-signal">
+        <span class="call-sign"><strong>{{ callSign }}</strong></span>
+        <span class="signal-divider" aria-hidden="true"></span>
+        <span class="theme-song-info">
+          <span class="theme-song-label">OUR THEME SONG</span>
+          <span class="theme-song-track">{{ themeSong.title }} <span>by {{ themeSong.artist }}</span></span>
+        </span>
+        @if (soundtrackUrl) {
+          <audio class="theme-audio" [src]="soundtrackUrl" controls loop preload="metadata" aria-label="Always by Atlantic Starr"></audio>
+        } @else {
+          <a class="theme-song-link" [href]="themeSong.searchUrl" target="_blank" rel="noopener noreferrer">
+            {{ themeSong.title }} <span>by {{ themeSong.artist }}</span>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M5 5h6v6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"/></svg>
+          </a>
+        }
+      </div>
+    </div>
+
+    <div class="hero-caption" aria-hidden="true"><span>{{ callSign }}</span><span class="caption-rule"></span><span>DIVIS &amp; ANTON</span></div>
+    <a class="scroll-cue" href="#our-story" aria-label="Scroll to our story">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </section>
+
+  <section class="film-section" id="our-story">
+    <div class="section-heading">
+      <div>
+        <p class="section-kicker">A LONG-DISTANCE LOVE STORY</p>
+        <h2>Little moments. All ours.</h2>
+      </div>
+      <span class="section-count">01 <span>/ {{ slides.length.toString().padStart(2, '0') }}</span></span>
+    </div>
+
+    <article class="film-card">
+      <div class="film-art" [style.--card-art]="'url(' + coverImage + ')'" role="img" aria-label="Divis smiling with a bouquet of flowers and a pink heart pillow">
+        <span class="art-label">A <span>ACRYLUS STUDIO</span></span>
+        <span class="art-title">US,<br>IN EVERY<br>FRAME</span>
+        <span class="art-credit">A STORY ACROSS THE MILES</span>
+      </div>
+      <div class="film-copy">
+        <div class="film-copy-topline"><span>PHOTOS, VIDEOS &amp; LITTLE THINGS</span><span class="copy-line"></span></div>
+        <h3>Our story so far</h3>
+        <p class="film-long-description">Photos, little everyday moments, and the words that changed everything. A small way to feel close, even when we’re far apart.</p>
+        <dl class="credits">
+          <div><dt>FOR</dt><dd>Divis</dd></div>
+          <div><dt>FROM</dt><dd>Anton</dd></div>
+          <div><dt>CHAPTERS</dt><dd>{{ slides.length }} moments</dd></div>
+        </dl>
+        <button class="text-action" type="button" (click)="openSlideshow()">
+          <span>Start at the beginning</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+        </button>
+      </div>
+    </article>
+  </section>
+
+  <section class="note-section" id="poem">
+    <div class="note-copy">
+      <p class="section-kicker">THE MOMENT EVERYTHING CHANGED</p>
+      <h2>“Salamat Sa Tanan”</h2>
+      <p class="note-teaser">The poem you wrote when you finally said yes. I still carry every word with me, especially on the days the distance feels a little longer.</p>
+      <button class="note-button" type="button" (click)="openSlideshow(poemStartIndex)">
+        <span>Read your poem, page by page</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg>
+      </button>
+    </div>
+    <div class="poem-pair-gallery">
+      <div class="divis-poem-pages" aria-label="All five pages of Divis’s poem">
+        @for (page of poemPages; track page) {
+          <button class="poem-page-card" type="button" [attr.aria-label]="'Open page ' + page + ' of Divis’s poem'" (click)="openSlideshow(poemStartIndex + page - 1)">
+            <img [src]="'/img/poem/page' + page + '.jpeg'" [alt]="'Page ' + page + ' of Salamat Sa Tanan'" loading="lazy">
+            <span>PAGE {{ page }} <small>OF 5</small></span>
+          </button>
+        }
+      </div>
+      <button class="reply-poem-card" type="button" aria-label="Open Beautiful Direction in the slideshow" (click)="openSlideshow(slides.length - 1)">
+        <img [src]="replyPoemUrl" alt="Anton’s poem, Beautiful Direction">
+      </button>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <a class="footer-mark" href="#home">ACRYLUS<span> STUDIO</span></a>
+    <div class="footer-message">
+      <p>Always and Forever yours</p>
+    </div>
+    <span class="footer-copyright">{{ callSign }}</span>
+  </footer>
+
+  @if (isSlideshowOpen) {
+    <div class="player-backdrop slideshow-backdrop" role="presentation" (click)="closeSlideshow()" (keydown.escape)="closeSlideshow()">
+      <section class="player-dialog slideshow-dialog" role="dialog" aria-modal="true" aria-label="Our story slideshow" (click)="$event.stopPropagation()">
+        <button class="player-close" type="button" aria-label="Close slideshow" (click)="closeSlideshow()">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"/></svg>
+        </button>
+
+        <div class="slideshow-topline">
+          <span>{{ callSign }} <span class="topline-divider">/</span> ACRYLUS STUDIO <span class="topline-divider">/</span> FOR DIVIS</span>
+          <span class="slide-chapter">{{ currentSlide.chapter }}</span>
+        </div>
+
+        <div class="slide-stage" [class.slide-stage-poem]="currentSlide.kind === 'poem'" aria-live="polite">
+          @if (currentSlide.kind === 'video') {
+            <video class="story-media story-video" [src]="currentSlide.src" [attr.aria-label]="currentSlide.alt" controls playsinline preload="metadata"></video>
+          } @else {
+            <img class="story-media" [class.poem-media]="currentSlide.kind === 'poem'" [src]="currentSlide.src" [alt]="currentSlide.alt">
+          }
+          </div>
+
+        <div class="slideshow-caption">
+          <div class="caption-copy">
+            <span class="slide-number">{{ (currentIndex + 1).toString().padStart(2, '0') }} <span>/ {{ slides.length.toString().padStart(2, '0') }}</span></span>
+            <p>{{ currentSlide.caption }}</p>
+          </div>
+          <div class="slide-controls">
+            <button type="button" class="slide-arrow" aria-label="Previous slide" [disabled]="currentIndex === 0" (click)="previousSlide()">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m6 6-6-6 6-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg>
+            </button>
+            <button type="button" class="slide-arrow" [attr.aria-label]="currentIndex === slides.length - 1 ? 'Close slideshow' : 'Next slide'" (click)="nextSlide()">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="slide-progress" aria-label="Choose a slide">
+          @for (slide of slides; track $index) {
+            <button type="button" class="progress-dot" [class.progress-dot-active]="$index === currentIndex" [attr.aria-label]="'Go to slide ' + ($index + 1) + ': ' + slide.chapter" [attr.aria-current]="$index === currentIndex ? 'step' : null" (click)="goToSlide($index)"></button>
+          }
+        </div>
+
+        <div class="slideshow-soundtrack">
+          <span class="soundtrack-name"><span>OUR THEME SONG</span> Always <span>by Atlantic Starr</span></span>
+          <audio [src]="soundtrackUrl" autoplay controls loop preload="auto" aria-label="Always by Atlantic Starr"></audio>
+        </div>
+      </section>
+    </div>
+  }
+</main>
